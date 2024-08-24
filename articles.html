@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chetana - Articles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <nav class="topnav">
+      <a href="index.html" class="logo">
+        <img src="images/logo2.PNG" alt="Chetana Logo">
+      </a>
+      <div class="nav-links">
+        <a  href="index.html">Home</a>
+        <a class="active" href="articles.html">Articles</a>
+        <a href="events.html">Events</a>
+        <a href="https://linquert.github.io/create.html?id=6">About</a>
+      </div>
+      <div class="search-container">
+        <input type="text" placeholder="Search...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section id="tag-search" class="tag-search">
+      <h2>EXPLORE ARTICLES BY TAGS</h2>
+      <div id="tags" class="tags">
+        <button class="tag active" data-tag="all">All</button>
+        <!-- Other tags will be dynamically inserted here -->
+      </div>
+    </section>
+    <div class="content-wrapper">
+      <section id="articles-list" class="articles-list">
+        <!-- Articles will be dynamically inserted here -->
+      </section>
+      <aside class="sidebar">
+        <!-- Placeholder for future content -->
+      </aside>
+    </div>
+  </main>
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="col col1">
+        <a href="#home">
+          <img src="images/logo1.PNG" alt="Chetana Logo">
+        </a>
+        <p>The student voices of IISER-BPR</p>
+        <div class="social">
+          <a href="https://www.instagram.com/iiser_chetana?igsh=MTB2bWxwdmsxbm16ag==" target="_blank" class="link"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/Chetana1681704?t=wsBsry0_9dsKedult-JXAw&s=09" target="_blank" class="link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col col2">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="https://linquert.github.io/create.html?id=6">About</a></li>
+          <li><a href="https://forms.gle/VVHeMwqaMX6tgbrm8">Submit an Article</a></li>
+          <li><a href="#join">Join Our Team</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+        </ul>
+      </div>
+      <div class="col col4">
+        <h4>STAY UPDATED</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <script src='https://unpkg.com/gsap@3/dist/gsap.min.js'></script>
+  <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+  <script src="./script.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFFnty5U0xdzBvZiYV13qehrNH9udnw50",
+      authDomain: "chetana-a9033.firebaseapp.com",
+      projectId: "chetana-a9033",
+      storageBucket: "chetana-a9033.appspot.com",
+      messagingSenderId: "86084685111",
+      appId: "1:86084685111:web:ba5f162fcf8f17cf4b9eb2",
+      measurementId: "G-Q65KS1DJVS"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = firebase.firestore();
+
+    // Fetch and display articles
+    function fetchArticles() {
+      db.collection("articles id").get().then((querySnapshot) => {
+        let articlesHtml = "";
+        let tags = new Set(["all"]);
+
+        querySnapshot.forEach((doc) => {
+          const article = doc.data();
+          articlesHtml += createArticleHtml(article, doc.id);
+          article.tags.forEach(tag => tags.add(tag.toLowerCase()));
+        });
+
+        document.getElementById("articles-list").innerHTML = articlesHtml;
+        
+        const tagsHtml = Array.from(tags).map(tag => 
+          `<button class="tag${tag === 'all' ? ' active' : ''}" data-tag="${tag}">${tag}</button>`
+        ).join("");
+        document.getElementById("tags").innerHTML = tagsHtml;
+
+        // Add event listeners to tags
+        document.querySelectorAll('.tag').forEach(tagButton => {
+          tagButton.addEventListener('click', () => filterArticles(tagButton.dataset.tag));
+        });
+      }).catch((error) => {
+        console.error("Error fetching documents: ", error);
+      });
+    }
+
+    function createArticleHtml(article, id) {
+  return `
+    <article class="article-item" data-tags="${article.tags.join(' ').toLowerCase()}">
+      <div class="article-image" style="background-image: url('${article.image}');"></div>
+      <div class="article-content">
+        <h3>${article.name}</h3>
+        <p>${article.description}</p>
+        <div class="article-tags">
+          ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <a href="create.html?id=${id}" class="read-more">READ MORE</a>
+      </div>
+    </article>
+  `;
+}
+
+    function filterArticles(tag) {
+      const articles = document.querySelectorAll('.article-item');
+      articles.forEach(article => {
+        if (tag === 'all' || article.dataset.tags.includes(tag)) {
+          article.style.display = 'flex';
+        } else {
+          article.style.display = 'none';
+        }
+      });
+
+      // Update active tag
+      document.querySelectorAll('.tag').forEach(tagButton => {
+        tagButton.classList.toggle('active', tagButton.dataset.tag === tag);
+      });
+    }
+
+    // Call fetchArticles when the page loads
+    document.addEventListener('DOMContentLoaded', fetchArticles);
+  </script>
+</body>
+</html>

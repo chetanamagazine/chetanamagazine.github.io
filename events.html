@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chetana - Events</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .magazine-launch {
+    text-align: center;
+  }
+  .timer {
+    font-size: 3rem;
+    margin-top: 2rem;
+  }
+  .timer span {
+    padding: 0 0.5rem;
+  }
+</style>
+
+</head>
+<body>
+  <!-- Header -->
+<header>
+  <nav class="topnav">
+    <a href="index.html" class="logo">
+      <img src="images/logo2.PNG" alt="Chetana Logo">
+    </a>
+    <div class="nav-links">
+      <a  href="index.html">Home</a>
+      <a href="articles.html">Articles</a>
+      <a class="active" href="events.html">Events</a>
+      <a href="https://linquert.github.io/create.html?id=6" target="_blank">About</a>
+    </div>
+    <div class="search-container">
+      <form action="/search" method="get">
+        <input type="text" name="query" placeholder="Search..." aria-label="Search">
+        <button type="button" aria-label="Search"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </nav>
+</header>
+
+  <!-- Main Content -->
+  <main>
+    <section id="magazine-launch" class="magazine-launch">
+        <h2>Magazine Launch Countdown</h2>
+        <div id="timer" class="timer">
+          <span id="days">00</span>
+          <span>:</span>
+          <span id="hours">00</span>
+          <span>:</span>
+          <span id="minutes">00</span>
+          <span>:</span>
+          <span id="seconds">00</span>
+        </div>
+      </section>  
+    
+  </main>
+
+  <!-- Footer -->
+
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="col col1">
+        <a href="index.html">
+          <img src="images/logo1.PNG" alt="Chetana Logo">
+        </a>
+        <p>The student voices of IISER-BPR</p>
+        <div class="social">
+          <a href="https://www.instagram.com/iiser_chetana?igsh=MTB2bWxwdmsxbm16ag==" target="_blank" class="link"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/Chetana1681704?t=wsBsry0_9dsKedult-JXAw&s=09" target="_blank" class="link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="col col2">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="https://linquert.github.io/create.html?id=6">About</a></li>
+          <li><a href="https://forms.gle/VVHeMwqaMX6tgbrm8">Submit an Article</a></li>
+          <li><a href="#join">Join Our Team</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+        </ul>
+      </div>
+      <div class="col col4">
+        <h4>STAY UPDATED</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script src='https://unpkg.com/gsap@3/dist/gsap.min.js'></script>
+  <script src='https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js'></script>
+  <script src="./script.js"></script>
+  <script src="./events.js"></script>
+
+
+
+</body>
+</html>

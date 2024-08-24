@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chetana - Article</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="create.css">
+</head>
+<body>
+    <header>
+        <nav class="topnav">
+          <a href="index.html" class="logo">
+            <img src="images/logo2.PNG" alt="Chetana Logo">
+          </a>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="articles.html">Articles</a>
+            <a href="events.html">Events</a>
+            <a href="https://chetanamagazine.github.io/create.html?id=6" >About</a>
+          </div>
+          <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </div>
+        </nav>
+      </header>
+  
+  
+  <main>
+    <div class="article-container">
+    <article id="article-content" class="article-full">
+      <!-- Article content will be dynamically inserted here -->
+    </article>
+</div>
+  </main>
+
+  
+  <footer id="footer">
+    <div class="footer-content">
+        <div class="col col1">
+          <a href="#home">
+            <img src="images/logo1.png" alt="Chetana Logo">
+          </a>
+          <p>The student voices of IISER-BPR</p>
+          <div class="social">
+            <a href="https://www.instagram.com/iiser_chetana?igsh=MTB2bWxwdmsxbm16ag==" target="_blank" class="link"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/Chetana1681704?t=wsBsry0_9dsKedult-JXAw&s=09" target="_blank" class="link"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="col col2">
+          <h4>QUICK LINKS</h4>
+          <ul>
+            <li><a href="https://chetanamagazine.github.io/create.html?id=6" >About</a></li>
+            <li><a href="https://forms.gle/VVHeMwqaMX6tgbrm8">Submit an Article</a></li>
+            <li><a href="#join">Join Our Team</a></li>
+            <li><a href="#feedback">Feedback</a></li>
+          </ul>
+        </div>
+        <div class="col col4">
+          <h4>STAY UPDATED</h4>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">SUBSCRIBE</button>
+          </form>
+        </div>
+      </div>
+      </footer>
+
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script src="script.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDFFnty5U0xdzBvZiYV13qehrNH9udnw50",
+      authDomain: "chetana-a9033.firebaseapp.com",
+      projectId: "chetana-a9033",
+      storageBucket: "chetana-a9033.appspot.com",
+      messagingSenderId: "86084685111",
+      appId: "1:86084685111:web:ba5f162fcf8f17cf4b9eb2",
+      measurementId: "G-Q65KS1DJVS"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Initialize Firestore
+    const db = firebase.firestore();
+
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+      name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+      var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+      var results = regex.exec(location.search);
+      return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    }
+
+    // Function to format article content  
+    function formatArticleContent(content) {
+      // Replace formatting tags with HTML elements
+      content = content.replace(/\{bold\}(.*?)\{bold\}/g, '<strong>$1</strong>');
+      content = content.replace(/\{italic\}(.*?)\{italic\}/g, '<em>$1</em>');
+      content = content.replace(/\{underline\}(.*?)\{underline\}/g, '<u>$1</u>');
+      content = content.replace(/\{strike\}(.*?)\{strike\}/g, '<del>$1</del>');
+      content = content.replace(/\{newline\}/g, '<br>');
+      content = content.replace(/\{quote\}(.*?)\{quote\}/g, '<blockquote>$1</blockquote>');
+      content = content.replace(/\{code\}(.*?)\{code\}/g, '<pre><code>$1</code></pre>');
+      content = content.replace(/\{inline-code\}(.*?)\{inline-code\}/g, '<code>$1</code>');
+      content = content.replace(/\{footnote\}(.*?)\{footnote\}/g, '<sup id="ref-$1"><a href="#id-$1">[note]</a></sup>');
+      content = content.replace(/\{footnote-list\}(.*?)\{footnote-item\}(.*?)\{footnote-list\}/g, '<ol class="footnote-list"><li id="id-$1">$2</li></ol>');
+      content = content.replace(/\{pull-quote\}\[(.*?)\]\{pull-quote\}/g, '<blockquote class="pull-quote">$1</blockquote>');
+      content = content.replace(/\{attributed-quote\}\[(.*?)\]\[(.*?)\]\{attributed-quote\}/g, '<blockquote class="attributed-quote">$1<footer>$2</footer></blockquote>');
+      content = content.replace(/\{cite\}\[(.*?)\]\[(.*?)\]\{cite\}/g, '<a href="$2" target="_blank">$1</a>');
+      content = content.replace(/\{h(\d+)\}(.*?)\{h\1\}/g, (match, level, text) => `<h${level}>${text}</h${level}>`);
+      content = content.replace(/\{ul\}(.*?)\{li\}(.*?)\{ul\}/g, (match, items) => '<ul><li>' + items.replace(/\{li\}/g, '</li><li>') + '</li></ul>');
+      content = content.replace(/\{ol\}(.*?)\{li\}(.*?)\{ol\}/g, (match, items) => '<ol><li>' + items.replace(/\{li\}/g, '</li><li>') + '</li></ol>');
+      content = content.replace(/\{image\}\[(.*?)\]\[(.*?)\]\[(.*?)\]\[(.*?)\]\[(.*?)\]\\"(.*?)\\"\}/g, (match, orientation, size, position, borderRadius, shadow, src, caption) => 
+  `<figure class="article-image-container" style="text-align: ${position};">
+    <img src="${src}" alt="${caption}" style="width: ${size}; transform: rotate(${orientation}deg); border-radius: ${borderRadius}; box-shadow: ${shadow};">
+    <figcaption>${caption}</figcaption>
+  </figure>`
+);
+      content = content.replace(/\{highlight\}(.*?)\{highlight\}/g, '<mark>$1</mark>');
+      content = content.replace(/\{sup\}(.*?)\{sup\}/g, '<sup>$1</sup>');
+      content = content.replace(/\{sub\}(.*?)\{sub\}/g, '<sub>$1</sub>');
+      content = content.replace(/\{align-left\}(.*?)\{align-left\}/g, '<div style="text-align: left;">$1</div>');
+      content = content.replace(/\{hr\}/g, '<hr>');
+      content = content.replace(/\{table\}(.*?)\{tr\}(.*?)\{td\}(.*?)\{td\}(.*?)\{tr\}(.*?)\{table\}/g, (match, row1, row2, cell1, cell2, row3) => '<table><tr><td>' + cell1 + '</td><td>' + cell2 + '</td></tr><tr><td>' + row3 + '</td></tr></table>');
+      content = content.replace(/\{collapse\}(.*?)\{collapse-content\}(.*?)\{collapse\}/g, '<details><summary>$1</summary>$2</details>');
+      content = content.replace(/\{youtube\}(.*?)\{youtube\}/g, '<div class="video-container"><iframe width="560" height="315" src="https://www.youtube.com/embed/$1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>');
+      content = content.replace(/\{cta\}\[(.*?)\]\[(.*?)\]\{cta\}/g, '<a href="$2" class="cta-button">$1</a>');
+      content = content.replace(/\{info\}(.*?)\{info\}/g, '<div class="info-box">$1</div>');
+      content = content.replace(/\{warning\}(.*?)\{warning\}/g, '<div class="warning-box">$1</div>');
+      content = content.replace(/\{pros\}\{item\}(.*?)\{item\}\{pros\}/g, '<div class="pros-list"><h4>Pros:</h4><ul><li>$1</li></ul></div>');
+      content = content.replace(/\{cons\}\{item\}(.*?)\{item\}\{cons\}/g, '<div class="cons-list"><h4>Cons:</h4><ul><li>$1</li></ul></div>');
+      content = content.replace(/\{latex\}(.*?)\{latex\}/g, '\\($1\\)');  // Inline LaTeX
+      content = content.replace(/\{block-latex\}(.*?)\{block-latex\}/g, '\\[ $1 \\]');  // Block LaTeX
+
+      return content;
+}
+
+    // Fetch and display article
+
+    function fetchArticle() {
+      const articleId = getUrlParameter('id');
+      if (!articleId) {
+        document.getElementById('article-content').innerHTML = '<p>Article not found.</p>';
+        return;
+      }
+
+      db.collection("articles id").doc(articleId).get().then((doc) => {
+        if (doc.exists) {
+          const article = doc.data();
+          displayArticle(article);
+        } else {
+          document.getElementById('article-content').innerHTML = '<p>Article not found.</p>';
+        }
+      }).catch((error) => {
+        console.error("Error fetching article: ", error);
+        document.getElementById('article-content').innerHTML = '<p>Error loading article.</p>';
+      });
+    }
+
+    function displayArticle(article) {
+      const articleHtml = `
+        <h1>${article.name}</h1>
+        <div class="article-meta">
+          <span class="author">By ${article.author}</span>
+          <span class="date">Published on ${new Date(article.published.seconds * 1000).toLocaleDateString()}</span>
+        </div>
+        <img src="${article.image}" alt="${article.name}" class="article-image">
+        <div class="article-tags">
+          ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+        </div>
+        <div class="article-content">
+          ${article.content.map(paragraph => `<p>${formatArticleContent(paragraph)}</p>`).join('')}
+        </div>
+      `;
+      document.getElementById('article-content').innerHTML = articleHtml;
+
+    }
+
+    // Call fetchArticle when the page loads
+    document.addEventListener('DOMContentLoaded', fetchArticle);
+</script>
+</body>
+</html>
