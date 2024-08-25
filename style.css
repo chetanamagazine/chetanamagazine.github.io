@@ -358,9 +358,13 @@
   
   .article-content p {
     font-size: 0.9rem;
+    padding: 0 0.75rem;
     margin-bottom: 1rem;
     cursor: pointer;
   }
+.article-content h3 {
+    padding: 0 0.50rem;
+}
   
   .articles-list .read-more {
     display: block;
