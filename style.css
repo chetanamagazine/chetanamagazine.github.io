@@ -719,13 +719,13 @@ footer ul li a:hover {
   }
   
   .article-card h3 {
-    padding: 1rem;
+    padding: 0 0.5rem;
     font-size: 1.2rem;
     color: var(--color-accent);
   }
   
   .article-card p {
-    padding: 0 1rem;
+    padding: 0 0.5rem;
     flex-grow: 1;
     color: var(--color-text);
   }
