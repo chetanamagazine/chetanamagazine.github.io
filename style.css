@@ -223,13 +223,11 @@ img {
 }
 
 .article-card h3 {
-  padding: 0.5rem 0;
   font-size: 1.2rem;
   color: var(--color-accent);
 }
 
 .article-card p {
-  padding: 0.5rem 0;
   flex-grow: 1;
   color: var(--color-text);
 }
@@ -346,6 +344,7 @@ img {
 
 .article-content p {
   font-size: 0.9rem;
+  padding: 0.5rem 0;
   margin-bottom: 1rem;
   cursor: pointer;
 }
@@ -377,7 +376,9 @@ footer {
   gap: 2rem;
 }
 
-.col h3,
+.col h3{
+    padding: 0.5rem ;
+}
 .col h4 {
   margin-bottom: 1rem;
   font-size: 1.2rem;
