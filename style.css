@@ -509,7 +509,7 @@ footer ul li a:hover {
   }
   
   body {
-    font-family: 'Space Mono', monospace;
+    font-family: 'poppins', sans-serif;
     line-height: 1.6;
     color: var(--color-bg);
     background-color: var(--color-card);
