@@ -136,7 +136,7 @@ img {
 
 .cta-button {
   display: inline-block;
-  background-color: var(--color-button);
+  background-color: var(--color-bg);
   color: var(--color-card);
   padding: 0.75rem 1.5rem;
   text-decoration: none;
