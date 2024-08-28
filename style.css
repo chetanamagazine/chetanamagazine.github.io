@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=:wght@400;700&family=Space+Mono:wght@400;700&display=swap');
 /* Color Variables */
 :root {
     --color-bg: #374259;
@@ -39,18 +39,21 @@
   }
   
   .logo {
+
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--color-bg);
+    
   }
   
   .nav-links {
     display: flex;
     flex-wrap: wrap;
+    justify-self: center;
   }
   
   .nav-links a {
-    color: var(--color-bg);
+    color: var(--color-button);
     text-decoration: none;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease;
@@ -69,15 +72,15 @@
   
   .search-container input[type="text"] {
     padding: 0.5rem;
-    border: 2px solid var(--color-bg);
-    background-color: var(--color-text);
+    border: 2px solid var(--color-accent);
+    background-color: var(--color-button);
     color: var(--color-accent);
   }
   
   .search-container button {
     padding: 0.5rem 1rem;
     background-color: var(--color-text); /*this line has been changed*/
-    border: 2px solid var(--color-bg); /*this line has been changed*/
+    border: 2px solid var(--color-accent); /*this line has been changed*/
     color: var(--color-bg); /*this line has been changed*/
     cursor: pointer;
   }
@@ -136,7 +139,7 @@
   
   .cta-button {
     display: inline-block;
-    background-color: var(--color-button);
+    background-color: var(--color-bg);
     color: var(--color-card);
     padding: 0.75rem 1.5rem;
     text-decoration: none;
@@ -470,18 +473,19 @@
   }
   
   .newsletter-form input[type="email"] {
+    font-style: italic;
     flex-grow: 1;
     padding: 0.5rem;
-    border: 2px solid var(--color-text);
-    background-color: var(--color-bg);
-    color: var(--color-text);
+    border: 2px solid var(--color-accent);
+    background-color: var(--color-button);
+    color: var(--color-bg);
   }
   
   .newsletter-form button {
     padding: 0.5rem 1rem;
-    background-color: var(--color-button);
-    color: var(--color-text);
-    border: 2px solid var(--color-text);
+    background-color: var(--color-text);
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
