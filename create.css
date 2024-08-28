@@ -3,8 +3,8 @@
 
 body {
     --s: 150px; /* control the size*/
-    --c1: #f08624;
-    --c2: #05057e;
+    --c1: #5c8984;
+    --c2: #545B77;
     --_g:
     var(--c1) 0%  5% ,var(--c2) 6%  15%,var(--c1) 16% 25%,var(--c2) 26% 35%,var(--c1) 36% 45%,
     var(--c2) 46% 55%,var(--c1) 56% 65%,var(--c2) 66% 75%,var(--c1) 76% 85%,var(--c2) 86% 95%,
@@ -34,7 +34,7 @@ body {
     max-width: 800px;
     margin: 3rem auto;
     padding: 2rem;
-    background-color: #545B77;
+    background-color: #DFD3C3;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 1;
@@ -68,7 +68,7 @@ body {
     justify-content: center;
     gap: 1rem;
     font-size: 1rem;
-    color: #fb8500;
+    color: #374259;
 }
 
 .article-meta span {
@@ -107,7 +107,7 @@ body {
     margin-bottom: 1.5rem;
     line-height: 1.8;
     font-size: 1.1rem;
-    color: whitesmoke;
+    color: #374259;
     text-align: justify;
 }
 
