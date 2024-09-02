@@ -558,6 +558,7 @@
     .hero {
       display: flex;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
       padding: 50px;
       background: var(--color-text);
@@ -573,6 +574,7 @@
       max-width: 100%;
       width: auto;
       height: auto;
+      align-self: center;
     }
       
     .nav-links {
