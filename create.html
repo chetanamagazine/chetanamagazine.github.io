@@ -175,8 +175,9 @@
         <div class="article-meta">
           <span class="author">By ${article.author}</span>
           <span class="date">Published on ${new Date(article.published.seconds * 1000).toLocaleDateString()}</span>
-          <br>
+          <div class="aritcle-meta">
           <span class="editor">Edited by ${article.editor}</span>
+          </div>
         </div>
         <img src="${article.image}" alt="${article.name}" class="article-image">
         <div class="article-tags">
