@@ -567,7 +567,14 @@
       height: 50vh;
       width: 100vw;
     }
-
+      
+    .hero img{
+      justify-self: center center;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+      
     .nav-links {
         margin-top: 1rem;
     }
