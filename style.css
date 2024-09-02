@@ -548,6 +548,7 @@
     }
       
     .front-img img {
+        padding-right: 20vw;
       margin-right: 60vw;
       margin-bottom: 2rem;
       width: 100%;
