@@ -250,12 +250,12 @@
   
   .article-image {
     height: 200px;
-    background-color: var(--color-bg);
+    /*background-color: var(--color-bg);*/
     background-size: cover;
     background-position: center;
     cursor: pointer;
     min-height: 200px;
-    background-color: var(--color-accent); /* Add yellow background to article image */
+    /*background-color: var(--color-accent); Add yellow background to article image */
   }
   
   .article-card h3 {
