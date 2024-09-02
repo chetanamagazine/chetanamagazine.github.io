@@ -565,6 +565,7 @@
       color: var(--color-button);
       height: 50vh;
       width: 100vw;
+      padding-left: 10%;
     }
       
     .hero img{
