@@ -106,6 +106,21 @@
     background-color: var(--color-accent);
     color: var(--color-bg);
   }
+
+.article-link {
+  text-decoration: none;
+  color: inherit; /* Inherit the text color from the parent element */
+  display: block; /* Ensure the link covers the entire card */
+}
+
+/* Remove any hover effects that apply to typical links */
+.article-link:hover,
+.article-link:focus,
+.article-link:active {
+  text-decoration: none; /* Ensure no underline on hover/focus/active */
+  color: inherit;
+}
+
   
   @media (max-width: 1200px) {
     .content-wrapper {
