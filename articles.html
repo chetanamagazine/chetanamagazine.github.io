@@ -131,19 +131,19 @@
 
 function createArticleHtml(article, id) {
   return `
-    <a href="create.html?id=${id}" class="article-link">
-      <article class="article-item" data-tags="${article.tags.join(' ').toLowerCase()}">
-        <div class="article-image" style="background-image: url('${article.image}');"></div>
-        <div class="article-content">
-          <h3>${article.name}</h3>
-          <p>${article.description}</p>
-          <div class="article-tags">
-            ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-          </div>
-          <span class="read-more">READ MORE</span>
-        </div>
-      </article>
-    </a>
+<a href="create.html?id=${id}" style="text-decoration: none; color: inherit; display: block;">
+  <article class="article-item" data-tags="${article.tags.join(' ').toLowerCase()}">
+    <div class="article-image" style="background-image: url('${article.image}');" aria-label="Image for ${article.name}"></div>
+    <div class="article-content">
+      <h3>${article.name}</h3>
+      <p>${article.description}</p>
+      <div class="article-tags">
+        ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+      </div>
+      <span class="read-more">READ MORE</span>
+    </div>
+  </article>
+</a>
   `;
 }
 
