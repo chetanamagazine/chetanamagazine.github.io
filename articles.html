@@ -129,19 +129,21 @@
       });
     }
 
-    function createArticleHtml(article, id) {
+function createArticleHtml(article, id) {
   return `
-    <article class="article-item" data-tags="${article.tags.join(' ').toLowerCase()}">
-      <div class="article-image" style="background-image: url('${article.image}');"></div>
-      <div class="article-content">
-        <h3>${article.name}</h3>
-        <p>${article.description}</p>
-        <div class="article-tags">
-          ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+    <a href="create.html?id=${id}" class="article-link">
+      <article class="article-item" data-tags="${article.tags.join(' ').toLowerCase()}">
+        <div class="article-image" style="background-image: url('${article.image}');"></div>
+        <div class="article-content">
+          <h3>${article.name}</h3>
+          <p>${article.description}</p>
+          <div class="article-tags">
+            ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+          </div>
+          <span class="read-more">READ MORE</span>
         </div>
-        <a href="create.html?id=${id}" class="read-more">READ MORE</a>
-      </div>
-    </article>
+      </article>
+    </a>
   `;
 }
 
